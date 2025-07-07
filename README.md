@@ -1,32 +1,99 @@
 # Auto Firmware Dumper
-It allows you to create ROM dumps using GitHub actions. It uses [DumprX](https://github.com/DumprX/DumprX) when creating dumps.  
-English | [简体中文](./README_CN.md)
+
+Automate ROM dumps creation using GitHub Actions with ease. This workflow leverages [DumprX](https://github.com/DumprX/DumprX) to extract firmware and optionally generate device trees compatible with LineageOS, TWRP, and vendor trees.
+
+---
+
+## Supported Languages
+
+- English (this README)
+- [简体中文](./README_CN.md)
+
+---
+
 ## Requirements
-- ROM Link [mediafire | mega.nz | gdrive | AndroidFileHost OR Directly download link]
-- GitHub token (I will explain)
-- Patience
 
-## Instruction for use
-- Go to the GitHub account settings. Create an access bucket there. Token type should be classic. Mark all the boxes. And copy the token immediately. Because you won't see again
-- Fork this repository.
-- Go to Settings of the forked repository.
-- Then go to Secrets and Variables, and tap Action in dropdown choices.
-- Tap New Repository Secrets;
-Add this:
-`GTOKEN`
-`<paste here your token name>`
-- Then tap Add Secrets.
-- If actions are not enabled, enable them from settings.
-- Go to: this repository > Actions > All workflows> Auto Firmware Dumper > Run workflows > Fill in the requested information.
-- When the process is completed, you will have the following among your repositories: dump_`<brand>`_`<device>`. And if you've approved it, the repository of device trees you've approved. You will understand when you look.
+- A valid Stock ROM download link  
+  (Supported sources: MediaFire, Mega.nz, Google Drive, AndroidFileHost, or any direct download URL)
+- A GitHub Personal Access Token (PAT) with repository permissions
+- Patience — firmware dumping can take some time depending on ROM size and network speed
 
-## Small explanations and notes
-- This project is licensed under the `Eclipse Public License 2.0`
-- Any deficiencies or problems on the dump are caused by Stock ROM.
-- I'm still developing it. But still good.
-- If there is a capital letter in the device code name, do not write it that way. Make all letters lowercase.
-- Report problems.
-- Make sure you fill in the information correctly.
-- It is imperative to enter all the desired information.
-- If you want some trees/resources to be loaded separately, you must check the relevant box.
-- 50MB and over files will be deleted. Reason: go maximum file head installation size 50MB. If that happens more, it will fail.
+---
+
+## Getting Started
+
+### Step 1: Generate a GitHub Personal Access Token (PAT)
+
+1. Go to your GitHub **Settings > Developer settings > Personal access tokens**.
+2. Click **Generate new token (classic)**.
+3. Select **repo** scope and all necessary permissions.
+4. Generate and **copy the token immediately** — you won't be able to see it again!
+
+### Step 2: Fork This Repository
+
+Fork this repository into your GitHub account to run the workflow.
+
+### Step 3: Configure Repository Secrets
+
+1. Navigate to your forked repository’s **Settings > Secrets and variables > Actions**.
+2. Click **New repository secret**.
+3. Add a secret named:  
+   `GTOKEN`  
+   And paste your GitHub Personal Access Token as the value.
+4. Save the secret.
+
+### Step 4: Enable GitHub Actions
+
+Make sure Actions are enabled in your repository under **Settings > Actions**.
+
+### Step 5: Run the Workflow
+
+1. Go to the **Actions** tab.
+2. Select **Auto Firmware Dumper** workflow.
+3. Click **Run workflow**.
+4. Fill in the requested inputs:
+   - Your GitHub username and email
+   - Stock ROM download URL
+   - Options to generate and upload Vendor, LineageOS, or TWRP device trees.
+5. Start the workflow.
+
+---
+
+## Output
+
+Once completed, your GitHub account will have new repositories named like:
+
+- `dump_<brand>_<device>` – Firmware dump repository
+- `android_vendor_<brand>_<device>` – Vendor tree (if enabled)
+- `lineage_device_<brand>_<device>` – LineageOS device tree (if enabled)
+- `twrp_device_<brand>_<device>` – TWRP device tree (if enabled)
+
+---
+
+## Notes & Tips
+
+- The project is licensed under the [Eclipse Public License 2.0](https://www.eclipse.org/legal/epl-2.0/).
+- Dump quality depends on the stock ROM; issues might stem from the source ROM.
+- Please use **lowercase letters** for device codenames to avoid errors.
+- Files larger than 50MB are automatically deleted due to GitHub size limits.
+- Make sure all inputs are filled correctly.
+- Select the appropriate checkboxes for generating and uploading device trees.
+- If any errors occur or you find bugs, please open an issue.
+
+---
+
+## Support & Contributions
+
+Feel free to open issues or submit pull requests. Your feedback and contributions are highly appreciated.
+
+---
+
+## Developer
+
+**t**  
+Email: frnbuid2005@gmail.com  
+GitHub: [github.com/t](https://github.com/t)
+
+---
+
+Happy dumping! 
